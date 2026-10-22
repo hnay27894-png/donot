@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Naham — Truth & Humanity</title>
+<title>publishing</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
 :root{--deep:#030a18;--navy:#071a3a;--blue:#2b7de9;--sky:#7cc7ff;--ice:#e8f4ff;--soft:#b9d4ee;--glass:rgba(120,190,255,.09);--line:rgba(150,210,255,.22);color-scheme:dark;
@@ -363,7 +363,7 @@ function send(){
  jb.disabled=true;say("Sending…",true);
  emailjs.send(EMAILJS_SERVICE_ID,EMAILJS_TEMPLATE_ID,{message:m,from_name:"Naham website visitor"},{publicKey:EMAILJS_PUBLIC_KEY})
  .then(function(){em.value="";say("Thank you! Your message was sent.",true)})
- .catch(function(){say("Sorry, the message could not be sent. Please try again later.",false)})
+ .catch(function(err){var d=(err&&(err.text||err.message))||"unknown error";say("Message could not be sent. EmailJS says: "+d+(err&&err.status?" (code "+err.status+")":""),false)})
  .then(function(){jb.disabled=false});
 }
 var cv=document.getElementById("bin"),cx=cv.getContext("2d"),W=0,H=0,L=[],R=8;
